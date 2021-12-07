@@ -7,7 +7,11 @@ Write a function called addTwo that takes in an array and adds two to every valu
 ------------------------------------------------------------------------------------------------ */
 
 const addTwo = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr[i] = arr[i] + 2;
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -18,7 +22,8 @@ Write a function named containsW that takes in a string. This function should us
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
-  // Solution code here...
+  if (str.match(/.*?[w].*?/)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,7 +39,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  if (input.match(/.*\\d+.*/)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------

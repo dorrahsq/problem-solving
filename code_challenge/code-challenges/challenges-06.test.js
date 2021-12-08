@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /* ------------------------------------------------------------------------------------------------
 
@@ -10,52 +10,57 @@ Write a function named sortByChildren that sorts the characters below by the num
 
 ------------------------------------------------------------------------------------------------ */
 let characters = [
-	{
-		name: 'Eddard',
-		spouse: 'Catelyn',
-		children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-		house: 'Stark',
-	},
-	{
-		name: 'Jon A.',
-		spouse: 'Lysa',
-		children: ['Robin'],
-		house: 'Arryn',
-	},
-	{
-		name: 'Cersei',
-		spouse: 'Robert',
-		children: ['Joffrey', 'Myrcella', 'Tommen'],
-		house: 'Lannister',
-	},
-	{
-		name: 'Daenarys',
-		spouse: 'Khal Drogo',
-		children: ['Drogon', 'Rhaegal', 'Viserion'],
-		house: 'Targaryen',
-	},
-	{
-		name: 'Mace',
-		spouse: 'Alerie',
-		children: ['Margaery', 'Loras'],
-		house: 'Tyrell',
-	},
-	{
-		name: 'Euron',
-		spouse: null,
-		children: [],
-		house: 'Greyjoy',
-	},
-	{
-		name: 'Jon S.',
-		spouse: null,
-		children: [],
-		house: 'Snow',
-	},
+  {
+    name: "Eddard",
+    spouse: "Catelyn",
+    children: ["Robb", "Sansa", "Arya", "Bran", "Rickon"],
+    house: "Stark",
+  },
+  {
+    name: "Jon A.",
+    spouse: "Lysa",
+    children: ["Robin"],
+    house: "Arryn",
+  },
+  {
+    name: "Cersei",
+    spouse: "Robert",
+    children: ["Joffrey", "Myrcella", "Tommen"],
+    house: "Lannister",
+  },
+  {
+    name: "Daenarys",
+    spouse: "Khal Drogo",
+    children: ["Drogon", "Rhaegal", "Viserion"],
+    house: "Targaryen",
+  },
+  {
+    name: "Mace",
+    spouse: "Alerie",
+    children: ["Margaery", "Loras"],
+    house: "Tyrell",
+  },
+  {
+    name: "Euron",
+    spouse: null,
+    children: [],
+    house: "Greyjoy",
+  },
+  {
+    name: "Jon S.",
+    spouse: null,
+    children: [],
+    house: "Snow",
+  },
 ];
 
 const sortByChildren = (charArray) => {
-	// Solution code here...
+  return charArray.sort((a, b) => {
+    if (a.children.length == b.children.length) {
+      return a.house - b.house;
+    }
+    return a.children.length - b.children.length;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,21 +71,21 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
 const courseInfo = {
-	name: 'Code 301',
-	duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
-	topics: [
-		'SMACSS',
-		'APIs',
-		'NodeJS',
-		'SQL',
-		'jQuery',
-		'functional programming',
-	],
-	finalExam: true,
+  name: "Code 301",
+  duration: { dayTrack: "4 weeks", eveningTrack: "8 weeks" },
+  topics: [
+    "SMACSS",
+    "APIs",
+    "NodeJS",
+    "SQL",
+    "jQuery",
+    "functional programming",
+  ],
+  finalExam: true,
 };
 
 const getCourseKeys = (obj) => {
-	// Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +97,7 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-	// Solution code here...
+  return Object.values(obj).indexOf(value) > -1;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,7 +120,11 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-	// Solution code here...
+  const newArr = [];
+  for (const [key, value] of Object.entries(obj)) {
+    newArr.push(`${key}: ${value}`);
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,8 +134,12 @@ Write a function named getHouses that returns a new array containing the names o
 ------------------------------------------------------------------------------------------------ */
 
 const getHouses = (arr) => {
-	let houses = [];
-	// Solution code here...
+  let houses = [];
+  console.log(arr[0].house);
+  for (let i = 0; i < arr.length; i++) {
+    houses.push(arr[i].house);
+  }
+  return houses;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -142,7 +155,14 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-	// Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].name == character) {
+      if (arr[i].children.length) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -154,7 +174,15 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-	// Solution code here...
+  let booleanVal = false;
+  Object.entries(arr).forEach(([key, value]) => {
+    if (value.name == character) {
+      if (value.children.length) {
+        booleanVal = true;
+      }
+    }
+  });
+  return booleanVal;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -164,7 +192,14 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-	// Solution code here...
+  let size = 0;
+  arr.forEach((ele) => {
+    size = size +  ele.children.length + 1; //mother + children
+    if (ele.spouse !== null) {
+      size = size + 1;
+    }
+  });
+  return size;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,8 +213,14 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
-	const sizes = [];
-	// Solution code here...
+  const sizes = [];
+  arr.forEach((ele) => {
+    const obj = {};
+    obj.house = ele.house;
+    obj.members = ele.children.length + 1;
+    sizes.push(obj);
+  });
+  return sizes;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -198,11 +239,20 @@ All of these objects should be added to an array named "survivors". Return the "
 For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
-const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
+const deceasedSpouses = ["Catelyn", "Lysa", "Robert", "Khal Drogo", "Alerie"];
 
 const houseSurvivors = (arr) => {
-	const survivors = [];
-	// Solution code here...
+  const survivors = [];
+  arr.forEach((ele) => {
+    const obj = {};
+    obj.house = ele.house;
+    obj.members = ele.children.length + 1;
+    // if (deceasedSpouses.includes(ele.spouse)){
+    //   obj.members = obj.members - 1
+    // }
+    survivors.push(obj);
+  });
+  return survivors;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -216,101 +266,101 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
-	test('It should sort the characters by number of children', () => {
-		expect(sortByChildren(characters)[0].name).toStrictEqual('Euron');
-		expect(sortByChildren(characters)[0].children.length).toStrictEqual(0);
-	});
+describe("Testing challenge 1", () => {
+  test("It should sort the characters by number of children", () => {
+    expect(sortByChildren(characters)[0].name).toStrictEqual("Euron");
+    expect(sortByChildren(characters)[0].children.length).toStrictEqual(0);
+  });
 });
 
-describe('Testing challenge 2', () => {
-	test('It should return the keys from an object', () => {
-		expect(getCourseKeys(courseInfo)).toStrictEqual([
-			'name',
-			'duration',
-			'topics',
-			'finalExam',
-		]);
-	});
+describe("Testing challenge 2", () => {
+  test("It should return the keys from an object", () => {
+    expect(getCourseKeys(courseInfo)).toStrictEqual([
+      "name",
+      "duration",
+      "topics",
+      "finalExam",
+    ]);
+  });
 });
 
-describe('Testing challenge 3', () => {
-	test('It should return true if the value is in the object', () => {
-		expect(checkValues({ class: '301' }, '301')).toBe(true);
-	});
+describe("Testing challenge 3", () => {
+  test("It should return true if the value is in the object", () => {
+    expect(checkValues({ class: "301" }, "301")).toBe(true);
+  });
 
-	test('It should return false if the value is not in the object', () => {
-		expect(checkValues({ class: '301' }, '401')).toBe(false);
-	});
+  test("It should return false if the value is not in the object", () => {
+    expect(checkValues({ class: "301" }, "401")).toBe(false);
+  });
 });
 
-describe('Testing challenge 4', () => {
-	test('It should return an an array of names and numbers', () => {
-		const startingObj = {
-			'Grace Hopper': '222-303-5938',
-			'Ada Lovelace': '222-349-9842',
-			'Alan Turing': '222-853-5933',
-		};
+describe("Testing challenge 4", () => {
+  test("It should return an an array of names and numbers", () => {
+    const startingObj = {
+      "Grace Hopper": "222-303-5938",
+      "Ada Lovelace": "222-349-9842",
+      "Alan Turing": "222-853-5933",
+    };
 
-		expect(
-			updateNumbers(startingObj).includes('Grace Hopper: 222-303-5938'),
-		).toBe(true);
-	});
+    expect(
+      updateNumbers(startingObj).includes("Grace Hopper: 222-303-5938")
+    ).toBe(true);
+  });
 });
 
-describe('Testing challenge 5', () => {
-	test('It should return an array of the names of the houses', () => {
-		expect(getHouses(characters)[0]).toStrictEqual('Greyjoy');
-		expect(getHouses(characters).length).toStrictEqual(7);
-	});
+describe("Testing challenge 5", () => {
+  test("It should return an array of the names of the houses", () => {
+    expect(getHouses(characters)[0]).toStrictEqual("Greyjoy");
+    expect(getHouses(characters).length).toStrictEqual(7);
+  });
 });
 
-describe('Testing challenge 6', () => {
-	test('It should return true for characters that have children', () => {
-		expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
-	});
+describe("Testing challenge 6", () => {
+  test("It should return true for characters that have children", () => {
+    expect(hasChildrenValues(characters, "Daenarys")).toBeTruthy();
+  });
 
-	test('It should return false to characters who do not have children', () => {
-		expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
-	});
+  test("It should return false to characters who do not have children", () => {
+    expect(hasChildrenValues(characters, "Sansa")).toBeFalsy();
+  });
 });
 
-describe('Testing challenge 7', () => {
-	test('It should return true for characters that have children', () => {
-		expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
-	});
+describe("Testing challenge 7", () => {
+  test("It should return true for characters that have children", () => {
+    expect(hasChildrenEntries(characters, "Eddard")).toBeTruthy();
+  });
 
-	test('It should return false to characters who do not have children', () => {
-		expect(hasChildrenEntries(characters, 'Jon S.')).toBeFalsy();
-	});
+  test("It should return false to characters who do not have children", () => {
+    expect(hasChildrenEntries(characters, "Jon S.")).toBeFalsy();
+  });
 });
 
-describe('Testing challenge 8', () => {
-	test('It should return the number of characters in the array', () => {
-		expect(totalCharacters(characters)).toStrictEqual(26);
-	});
+describe("Testing challenge 8", () => {
+  test("It should return the number of characters in the array", () => {
+    expect(totalCharacters(characters)).toStrictEqual(26);
+  });
 });
 
-describe('Testing challenge 9', () => {
-	test('It should return an object for each house containing the name and size', () => {
-		expect(houseSize(characters)[1]).toStrictEqual({
-			house: 'Snow',
-			members: 1,
-		});
-		expect(houseSize(characters).length).toStrictEqual(7);
-	});
+describe("Testing challenge 9", () => {
+  test("It should return an object for each house containing the name and size", () => {
+    expect(houseSize(characters)[1]).toStrictEqual({
+      house: "Snow",
+      members: 1,
+    });
+    expect(houseSize(characters).length).toStrictEqual(7);
+  });
 });
 
-describe('Testing challenge 10', () => {
-	test('It should not include any deceased spouses', () => {
-		expect(houseSurvivors(characters)).toStrictEqual([
-			{ house: 'Greyjoy', members: 1 },
-			{ house: 'Snow', members: 1 },
-			{ house: 'Arryn', members: 2 },
-			{ house: 'Tyrell', members: 3 },
-			{ house: 'Lannister', members: 4 },
-			{ house: 'Targaryen', members: 4 },
-			{ house: 'Stark', members: 6 },
-		]);
-	});
+describe("Testing challenge 10", () => {
+  test("It should not include any deceased spouses", () => {
+    expect(houseSurvivors(characters)).toStrictEqual([
+      { house: "Greyjoy", members: 1 },
+      { house: "Snow", members: 1 },
+      { house: "Arryn", members: 2 },
+      { house: "Tyrell", members: 3 },
+      { house: "Lannister", members: 4 },
+      { house: "Targaryen", members: 4 },
+      { house: "Stark", members: 6 },
+    ]);
+  });
 });

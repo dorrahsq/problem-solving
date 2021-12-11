@@ -19,7 +19,12 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
-  // Solution code here...
+  const newArr = [];
+  for (const key in obj) {
+    newArr.push(`<li>name: ${obj.name}</li>`);
+    newArr.push(`<li>age: ${obj.age}</li>`);
+  }
+  return newArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +35,7 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => acc + curr, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +51,7 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => acc + curr.purchasePrice, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,7 +63,7 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => acc + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,7 +126,9 @@ let starWarsData = [
 ];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.reduce((acc, curr) => newArr.push(curr.name), []);
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,9 +140,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  const array = str.split("");
+  return array.reduce((acc, curr) => {
+    return curr + acc;
+  }, "");
 };
-
+//(reversedString("Code 301")).toStrictEqual("103 edoC")
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -186,7 +196,12 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => {
+    if (curr.children) {
+      acc += curr.children.length;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -198,7 +213,10 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  // return arr.reduce((acc, curr)=>{
+  //   acc.sum = acc.sum + curr
+  //     return acc.sum/arr.length;
+  //   }, { count: 0, sum: 0 });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -219,7 +237,12 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => {
+    if (isPrime(curr)) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -262,9 +285,18 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => {
+    if (curr.stat.name == statName) {
+      acc = curr;
+    }
+    return acc;
+  }, null);
 };
-
+//extractStat("speed", snorlaxData.stats)).toStrictEqual({
+//   stat: { url: "https://pokeapi.co/api/v2/stat/6/", name: "speed" },
+//   effort: 5,
+//   baseStat: 30,
+// });
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
 
@@ -276,7 +308,11 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  // Solution code here...
+  //  let newArr =  arr.filter((ele)=> {
+  //    if(ele.name.indexOf("a")> -1){
+  //      return ele
+  //    }});
+  //  console.log(newArr);
 };
 
 /* ------------------------------------------------------------------------------------------------

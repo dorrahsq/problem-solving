@@ -58,7 +58,13 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 ------------------------------------------------------------------------------------------------ */
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
+  const newArr = [];
+  arr.map((ele) => {
+    if (ele.match(/(a|i|o|e|u)/gi)) {
+      newArr.push(ele);
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -194,7 +200,9 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  return arr.filter((ele) => typeof ele == "number").map((ele) => {
+  return arr
+    .filter((ele) => typeof ele == "number")
+    .map((ele) => {
       if (ele % 2) return "odd";
       return "even";
     });

@@ -7,7 +7,7 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-  // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,7 +19,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  return arr.map((ele) => {
+    return ele.slice(0, 1);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -31,7 +33,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  return arr.filter((ele) => {
+    return ele.indexOf(":)") > -1;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -43,7 +47,14 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  return arr.map((ele) => {
+    let newEle = ele.split("");
+    newEle.splice(newEle.indexOf("("), 1);
+    newEle.splice(newEle.indexOf(" "), 1);
+    newEle.splice(newEle.indexOf(")"), 1);
+    newEle.splice(newEle.indexOf("-"), 1);
+    return newEle.join("");
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +66,14 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  return str
+    .split("")
+    .filter((ele, i) => {
+      if (i % 2 != 0) {
+        return ele;
+      }
+    })
+    .join("");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +83,19 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  let total = 0;
+  let total2 = arr.length;
+  let bool = false;
+  arr.map((ele) => {
+    let newEle = ele.split("");
+    if (newEle.indexOf(")") > -1) {
+      total += 1;
+    }
+  });
+  if (total2 == total) {
+    bool = true;
+  }
+  return bool;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +105,13 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  let total = [];
+  arr.map((ele) => {
+    if (ele.indexOf(target) > -1) {
+      total.push(ele);
+    }
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,7 +121,16 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  let total = 0;
+  arr.map((ele) => {
+    if (ele.indexOf(target) > -1) {
+      total += 1;
+    }
+  });
+  if (total == arr.length) {
+    return true;
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,7 +193,11 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 ------------------------------------------------------------------------------------------------ */
 
 const characterByIndex = (arr) => {
-  // Solution code here...
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr[i].slice(i, i + 1));
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------

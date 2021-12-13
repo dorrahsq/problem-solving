@@ -1,4 +1,4 @@
-"use strict"; //last one
+"use strict";
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
@@ -22,7 +22,7 @@ Write a function named containsW that takes in a string. This function should us
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
-  if (str.match(/.*?[w].*?/)) return true;
+  if (str.match(/w/)) return true;
   return false;
 };
 
@@ -39,8 +39,7 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  if (input.match(/.*\\d+.*/)) return true;
-  return false;
+  return /\d/.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +50,8 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  // Solution code here...
+  if (input.match(/world/g)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,7 +63,11 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  if (str.match(/\b[A-Z].*?\b/g)) {
+    return str.match(/\b[A-Z].*?\b/g);
+  } else {
+    return [];
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,7 +76,14 @@ CHALLENGE 6
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.map((ele) => {
+    let newww = ele.split(" ");
+    if (newww[0].match(/\b[A-J].*?\b/g)) {
+      newArr.push(ele);
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,7 +99,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+  if (input.toString().match(/\b(oct|october|Oct|October)\b/g)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------

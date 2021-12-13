@@ -9,7 +9,12 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, curr) => {
+    if (curr > acc) {
+      acc = curr;
+    }
+    return acc;
+  }, arr[0]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,7 +32,15 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  // Solution code here...
+  let max = 0;
+  matrix.map((ele) => {
+    ele.map((ele) => {
+      if (ele > max) {
+        max = ele;
+      }
+    });
+  });
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +58,13 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let max = 0;
+  matrix.map((elee) => {
+    elee.map((ele) => {
+      return (max += ele);
+    });
+  });
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +103,7 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +154,15 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let total = 0;
+  arr.map((ele) => {
+    return ele.items.map((elee) => {
+      if (elee.name == "Treats") {
+        total = elee.quantity;
+      }
+    });
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,7 +184,11 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if (board[row][col] == "#") {
+    return "hit";
+  } else {
+    return "miss";
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -169,7 +200,15 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  let total = 1;
+  numbers.map((ele) => {
+    let totalele = 1;
+    ele.map((ele) => {
+      totalele = totalele * ele;
+    });
+    total = total * totalele;
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -189,7 +228,17 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  // Solution code here...
+  let total = 0;
+  let count = 0;
+  weather.map((ele) => {
+    let totalele = 0;
+    ele.map((ele) => {
+      totalele = totalele + ele;
+      count++;
+    });
+    total = total + totalele;
+  });
+  return total / count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +259,7 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------

@@ -213,10 +213,7 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // return arr.reduce((acc, curr)=>{
-  //   acc.sum = acc.sum + curr
-  //     return acc.sum/arr.length;
-  //   }, { count: 0, sum: 0 });
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -292,11 +289,7 @@ const extractStat = (statName, arr) => {
     return acc;
   }, null);
 };
-//extractStat("speed", snorlaxData.stats)).toStrictEqual({
-//   stat: { url: "https://pokeapi.co/api/v2/stat/6/", name: "speed" },
-//   effort: 5,
-//   baseStat: 30,
-// });
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
 
@@ -308,11 +301,7 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  //  let newArr =  arr.filter((ele)=> {
-  //    if(ele.name.indexOf("a")> -1){
-  //      return ele
-  //    }});
-  //  console.log(newArr);
+ 
 };
 
 /* ------------------------------------------------------------------------------------------------

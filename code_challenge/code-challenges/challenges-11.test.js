@@ -24,7 +24,8 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePin = (pin) => {
-  // Solution code here...
+  if (pin.toString().match(/\b\d{4}\b/g)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,7 +37,11 @@ If the word is between 5 and 10 characters long, return true. Otherwise, return 
 ------------------------------------------------------------------------------------------------ */
 
 const validateWord = (word) => {
-  // Solution code here...
+  // if (typeof word == "string") {
+  //   if (word.toString().match(/^\w{5,10}$/g)) return true;
+  // } else {
+  //   return false;
+  // }
 };
 
 /* ------------------------------------------------------------------------------------------------

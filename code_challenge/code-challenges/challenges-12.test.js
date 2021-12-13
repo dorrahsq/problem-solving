@@ -102,9 +102,7 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
-const grandTotal = (stores) => {
-
-};
+const grandTotal = (stores) => {};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -259,7 +257,15 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-
+  const avgArr = [];
+  weather.map((ele) => {
+    let total = 0;
+    ele.map((elem) => {
+      total += elem;
+    });
+    avgArr.push(total / ele.length);
+  });
+  return Math.min(...avgArr);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -275,7 +281,16 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  const newArr = [];
+  const newStr = str.split("\n");
+  newStr.map((elem) => {
+    let total = 0;
+    elem.split(",").map((eleme) => {
+      total += Number(eleme);
+    });
+    newArr.push(total);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------

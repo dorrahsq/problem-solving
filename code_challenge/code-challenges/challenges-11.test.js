@@ -53,8 +53,8 @@ If it does, return true. If not, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const hasNumber = (string) => {
-  // if (string.match(/^D+[0-9]+/g)) return true;
-  // return false;
+  if (string.toString().match(/[a-z][0-9]/gi)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  if (email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) return true;
+  if (email.match(/[a-z]+([.]?[a-z])*@([a-z]+\.)*(com|org|net)\b/gi)) return true;
   return false;
 };
 
@@ -86,11 +86,11 @@ Write a function named validatePhoneNumber that accepts a phone number and deter
 Acceptable formats include:
  - (555) 555-5555
  - (555)555 5555
- - 555 555-5555
+ - 555 555-5555 done 
  - 555-5555555
  - 555-555 5555
- - 555-555-5555
- - 555 555 5555
+ - 555-555-5555 done 
+ - 555 555 5555 done 
  - 555555-5555
  - 5555555555
 

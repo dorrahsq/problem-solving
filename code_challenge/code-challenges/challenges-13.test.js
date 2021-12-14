@@ -201,7 +201,17 @@ const daysOfWeek = [
 ];
 
 const sortByDay = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  daysOfWeek.map((ele) => {
+    let smallArr = [];
+    arr.map((elem) => {
+      if (elem.includes(ele)) {
+        smallArr.push(elem);
+      }
+    });
+    newArr.push(smallArr);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------

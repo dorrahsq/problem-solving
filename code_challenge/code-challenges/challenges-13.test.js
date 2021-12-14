@@ -1,5 +1,7 @@
 "use strict";
 
+const { add } = require("cheerio/lib/api/traversing");
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -7,7 +9,15 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-
+  let lgth = 0;
+  let longest;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].length > lgth) {
+      lgth = arr[i].length;
+      longest = arr[i];
+    }
+  }
+  return arr.indexOf(longest);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +156,17 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
-  // Solution code here...
+  const bigArr = [];
+  arr.map((ele) => {
+    const smallArr = [];
+    ele.map((elem) => {
+      if (!elem.includes("Brook")) {
+        smallArr.push(elem);
+      }
+    });
+    bigArr.push(smallArr);
+  });
+  return bigArr;
 };
 
 /* ------------------------------------------------------------------------------------------------

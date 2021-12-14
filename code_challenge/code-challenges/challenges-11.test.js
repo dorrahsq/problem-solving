@@ -37,11 +37,11 @@ If the word is between 5 and 10 characters long, return true. Otherwise, return 
 ------------------------------------------------------------------------------------------------ */
 
 const validateWord = (word) => {
-  // if (typeof word == "string") {
-  //   if (word.toString().match(/^\w{5,10}$/g)) return true;
-  // } else {
-  //   return false;
-  // }
+  if (typeof word == "string") {
+    if (word.toString().match(/^[a-z]{5,10}$/gi)) return true;
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ If it does, return true. If not, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const hasNumber = (string) => {
-  // if (string.match(/^D+[0-9]+/)) return true;
+  // if (string.match(/^D+[0-9]+/g)) return true;
   // return false;
 };
 
@@ -74,7 +74,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  if (email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,7 +100,8 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+  // if (phoneNumber.match(/((\+92)|0)[.\- ]?[0-9][.\- ]?[0-9][.\- ]?[0-9]/g)) return true;
+  // return false;
 };
 
 /* ------------------------------------------------------------------------------------------------

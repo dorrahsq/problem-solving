@@ -74,6 +74,9 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
+  if (email.match(/^(?!(.*\.){N+1})(.*\.){3}.*$/gim)) {
+    return false;
+  }
   if (email.match(/[a-z]+([.]?[a-z])*@([a-z]+\.)*(com|org|net)\b/gi))
     return true;
   return false;

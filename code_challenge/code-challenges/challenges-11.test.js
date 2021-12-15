@@ -74,7 +74,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  if (email.match(/[a-z]+([.]?[a-z])*@([a-z]+\.)*(com|org|net)\b/gi)) return true;
+  if (email.match(/[a-z]+([.]?[a-z])*@([a-z]+\.)*(com|org|net)\b/gi))
+    return true;
   return false;
 };
 
@@ -100,8 +101,16 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // if (phoneNumber.match(/((\+92)|0)[.\- ]?[0-9][.\- ]?[0-9][.\- ]?[0-9]/g)) return true;
-  // return false;
+  if (
+    phoneNumber.match(/\b\(?(\d{3})\)?\s?\-?(\d{3})\s?(\d{4})$/gm) ||
+    phoneNumber.match(/\(?(\d{3})\)\s?(\d{3})\-\s?(\d{4})/gm) ||
+    phoneNumber.match(/^(\d{3})?\s?(\d{3})\-(\d{4})$/gm) ||
+    phoneNumber.match(/\b\(?(\d{3})\)?\-?(\d{3})\-?\s?(\d{4})$/gm)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,7 +123,17 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = (elements) => {
-  // Solution code here...
+  let newArr = [];
+  newArr = elements.map((ele) => {
+    return ele.match(/<\/[^>]*>/gm);
+  });
+  let newArr2 = [];
+  newArr.map((ele) => {
+    ele.map((elem) => {
+      newArr2.push(elem.slice(1, elem.length - 1));
+    });
+  });
+  return newArr2;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -209,7 +228,7 @@ describe("Testing challenge 5", () => {
 describe("Testing challenge 6", () => {
   test("It should match the acceptable phone number formats", () => {
     expect(validatePhoneNumber("(555) 555-5555")).toBeTruthy();
-    expect(validatePhoneNumber("555 555-5555")).toBeTruthy();
+    expect(validatePhoneNumber("555 555-5555")).toBeTruthy(); //////////
     expect(validatePhoneNumber("555-555-5555")).toBeTruthy();
     expect(validatePhoneNumber("555 5555555")).toBeTruthy();
     expect(validatePhoneNumber("5555555555")).toBeTruthy();
@@ -218,7 +237,7 @@ describe("Testing challenge 6", () => {
   test("It should not match unacceptable phone number formats", () => {
     expect(validatePhoneNumber("abcdefghij")).toBeFalsy();
     expect(validatePhoneNumber("222 222 2222 ext. 2222")).toBeFalsy();
-    expect(validatePhoneNumber("(222 222-2222")).toBeFalsy();
+    expect(validatePhoneNumber("(222 222-2222")).toBeFalsy(); ///////////////
     expect(validatePhoneNumber("222 222-2222-")).toBeFalsy();
     expect(validatePhoneNumber("(222 222- 2222")).toBeFalsy();
     expect(validatePhoneNumber("(222 222 -2222")).toBeFalsy();
